@@ -1,0 +1,10 @@
+openai
+chromadb
+python-dotenv
+langchain
+langchain-community
+langchain-openai
+langchain-text-splitters
+langgraph
+pypdf
+sentence-transformers
