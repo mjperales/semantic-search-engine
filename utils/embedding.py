@@ -16,7 +16,9 @@ def get_embedding_model():
         )
     elif embedding_provider == "openai":
         from langchain_openai import OpenAIEmbeddings
+        from pydantic import SecretStr
 
-        return OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"))
+        api_key = os.getenv("OPENAI_API_KEY", "")
+        return OpenAIEmbeddings(api_key=SecretStr(api_key) if api_key else None)
     else:
         raise ValueError(f"Unsupported embedding provider: {embedding_provider}")
